@@ -32,7 +32,7 @@ export default React.createClass({
 
 
   return (
-<View key= {x} style= {{justifyContent:'center'}}>
+<View key= {x} style= {{flex:1}}>
     <View style={styles.card}>
       <TouchableOpacity
       activeOpacity={ 0.7}
@@ -47,10 +47,10 @@ export default React.createClass({
      </TouchableOpacity>
     <View style={{marginLeft:10, marginRight:10,borderBottomWidth:1,borderColor:'#e3e3e3', height:25, flexDirection:'row' }}>
      <View style={{flex:1}}>
-    <Text style={{fontSize:14, fontWeight:'300', color:'#444'}}>{"x.title"} </Text>
+    <Text style={{fontSize:14, fontWeight:'300', color:'#444'}}>{x.title} </Text>
     </View>
     <View  style = {{flex:1,alignItems:"flex-end"}} >
-     <Text style={{fontSize:14, fontWeight:'300', color:'#444'}}>{"x.location"} </Text>
+     <Text style={{fontSize:14, fontWeight:'300', color:'#444'}}>{} </Text>
      </View>
        </View>
    <View style={{  height:25,marginLeft:10, marginRight:10, flexDirection:'row' , flex:1 }}>
@@ -58,7 +58,7 @@ export default React.createClass({
     <Text style={{fontSize:14, fontWeight:'300', color:'#444'}}>{""} </Text>
     </View>
     <View style = {{flex:1,alignItems:"flex-end"}} >
-     <Text style={{fontSize:14, fontWeight:'300', color:'#444'}}>{"x.description"} </Text>
+     <Text style={{fontSize:14, fontWeight:'300', color:'#444'}}>{x.description} </Text>
      </View>
     </View>
     </View>

@@ -332,31 +332,33 @@ _setModalVisible = (visible,picOfOfferedItem,picOfWantedItem,newRef,snapVal,oldR
 }
 
 render() {
- const TopNavigation = () => (
-  <View style={{ padding: 10, flexDirection: 'row', backgroundColor: '#FF5C7E' }}>
+  const TopNavigation = () => (
+    <View style={{ padding: 10, flexDirection: 'row', backgroundColor: '#FF5C7E' }}>
+    <View style={{ flex:0.4 , justifyContent:'center' , margin:5  }}>  
+    </View>
 
+    <View style={{ flex:0.2 , alignItems:'center', justifyContent:'center'   }}>
+    <Image
+     resizeMode={Image.resizeMode.contain}
+    source={require('funshare/src/img/f.png')}
+    style={{width:45, height:45}}
+    />
+    </View>
 
-  <View style={{ flex:0.4 , alignItems:'flex-start', justifyContent:'center' , margin:5  }}>
-  <IcoButton
+    <View style={{ flex:0.4 , alignItems:'flex-end', justifyContent:'center' , margin:5  }}>
+    <IcoButton
+    
+    source={require('funshare/src/img/swop.png')}
+    onPress={this.goToHome.bind(this)}
+    icostyle={{width:35, height:35}}
+    />
 
-  source={require('funshare/src/img/swop.png')}
-  onPress={this.goToHome.bind(this)}
-  icostyle={{width:35, height:35}}
-  />
-  </View>
-  <View style={{ flex:0.2 , alignItems:'center', justifyContent:'center'   }}>
-  <IcoButton
-  source={require('funshare/src/img/f.png')}
-  icostyle={{width:45, height:45}}
-  />
-  </View>
+    </View>
 
-  <View style={{ flex:0.4 , justifyContent:'center' , margin:5  }}>
-  </View>
-  </View>
-  );
+    </View>
+    );
  return (
-  <View style = {styles.container}>  
+  <View style = {{flex:1}}>  
   <TopNavigation/>  
   <ScrollView>
   <View style ={{flex:2,flexDirection:'row',  alignItems:'center',

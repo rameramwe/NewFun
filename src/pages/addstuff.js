@@ -165,8 +165,8 @@ render()
 
 
     var container = (
-    <View>
-    <View style={{flexDirection:'row'}}>
+    <View style={{flex:1 }}>
+    <View style={{flex:1 ,flexDirection:'row'}}>
     <InputButton
     value={"Hotswop"}
     container={this.state.category =="hotswop" ? issellected : null}
@@ -504,6 +504,7 @@ edit: {
   left:0
 },
 firstcontaner:{
+  flex:1,
   height: (deviceheight/3) ,
   width:devicewidth
 },
@@ -517,11 +518,13 @@ imageContainer:{
   
 },
 CContainer:{
+  flex:1,
   height: deviceheight-(deviceheight/3)-166 ,
   
 },
 
 image: {
+  flex:1,
   position: 'absolute',
   height: (deviceheight/3) ,
   width:deviceheight/3

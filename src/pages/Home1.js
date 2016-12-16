@@ -42,7 +42,7 @@ const testFile = null
 const styles = StyleSheet.create({
  
   inputContainer: {
-   
+    flex:1,
     margin:20, 
     marginTop:10,
     marginBottom:0   
@@ -87,6 +87,7 @@ const styles = StyleSheet.create({
 
   
   buttongrop: {
+  flex:1,
    justifyContent:'center',
    
    

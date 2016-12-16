@@ -47,7 +47,7 @@
       marginVertical: 20
     },
     item: {
-
+      flex:1,
       width:deviceWidth/4,
       height: 80,
       borderColor: '#efefef',
@@ -113,7 +113,7 @@
             var uidOfOfferingUser = snapshot.val().uid;
             piclinks.push(piclink);
             images.push(
-              <View Key={piclink}>
+              <View style = {{flex:1}} Key={piclink}>
               <TouchableHighlight
                Key={piclink}
               activeOpacity={ 0.75 }
@@ -121,7 +121,7 @@
               onPress={self.handleOffereditems.bind(this,desc,piclink,title,uidOfOfferingUser)}
               >
 
-              <View>
+              <View style= {{flex:1}} >
               <Image
               resizeMode={Image.resizeMode.cover}
               style={ styles.image }
@@ -334,16 +334,17 @@ render(){
   var innerContainerTransparentStyle =  
   { backgroundColor:   'rgba(0, 0, 0, 0.5)'}
 
-    var issellected ={ 
+    var noti ={ 
 
-     width:18,height:18,borderRadius:9, backgroundColor:'green',position: 'absolute',alignItems:'center',justifyContent:'center', top:0 , right:12
+    flex:1, width:18,height:18,borderRadius:9, backgroundColor:'green',position: 'absolute',alignItems:'center',justifyContent:'center', top:0 , right:12
 
    }  
+   var none = {height:0}
 
 var Notification = () => 
    (
 
-     <View style = {this.state.unseenNotifNumberGlobal >0? issellected : null} >
+     <View style = {this.state.unseenNotifNumberGlobal >0? noti : none } >
     <Text style = {{color:'white', fontSize:15 , fontWeight:'bold'}} >{this.state.unseenNotifNumberGlobal}</Text>
       </View>
   )
@@ -372,7 +373,7 @@ var Notification = () =>
     <View>
     <ScrollView
     horizontal={true}
-    style= {{ height: 400}} >
+    style= {{flex:1, height: 400}} >
     
     <View
     onPress={() => {this.handleOffereditems()}}
@@ -447,7 +448,8 @@ var Notification = () =>
 
   />
   <View style={{flex:0.1,alignItems:'center'}}>
- 
+  
+    
   <IcoButton
   source={require('funshare/src/img/ichat.png')}
   onPress={this.goToChat.bind(this)}
@@ -459,8 +461,13 @@ var Notification = () =>
   </View>
   </View>
   </View>
+   <View style={{flex:1,alignItems:'center' , justifyContent:'flex-start'}}>
   <Tinder _setModalVisible={this._setModalVisible.bind(this, true)} goToDetails={this.goToDetails.bind(this)} />
-
+    
+ 
+  
+   
+  </View>
   </View>
 
   </View>
