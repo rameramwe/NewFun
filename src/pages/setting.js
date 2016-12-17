@@ -1,4 +1,4 @@
-  'use strict';
+'use strict';
   import React, { Component } from 'react';
   import  {
     AppRegistry,
@@ -235,7 +235,7 @@ logout() {
     />
     </View>
     </View>
-    <View style={{flex:1  , marginLeft: 40 , marginBottom:4 , padding:4, flexDirection:'row' , borderBottomWidth:0.5 , borderBottomColor:'#dcdcdc'}}>
+    <View style={{ marginLeft: 40 , marginBottom:4 , padding:4, flexDirection:'row' , borderBottomWidth:0.5 , borderBottomColor:'#dcdcdc'}}>
     <View style ={{flex:0.9}}>
     <Text style={{fontSize:16}}>Datenschutzerklärung</Text>
     </View>
@@ -250,7 +250,6 @@ logout() {
     );
     var support= (
     <View style = {{flex:1}}>
-    <Text style={{fontSize:16}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Text>
     </View>
     );
 
@@ -265,7 +264,7 @@ logout() {
     </View>
     </View>
 
-    <View style={{flex:1,margin:5, marginLeft: 40 , flexDirection:'row' , borderBottomWidth:0.5 , borderBottomColor:'#dcdcdc'}}>
+    <View style={{ margin:5, marginLeft: 40 , flexDirection:'row' , borderBottomWidth:0.5 , borderBottomColor:'#dcdcdc'}}>
     <View style={{flex:0.5 , justifyContent:'flex-start'}}>
     <Text style={{fontSize:16}}>Neuer Deal</Text>
     </View>
@@ -274,7 +273,7 @@ logout() {
     </View>
     </View>
 
-    <View style={{flex:1, margin:5,marginLeft: 40 , flexDirection:'row' , borderBottomWidth:0.5 , borderBottomColor:'#dcdcdc'}}>
+    <View style={{ margin:5,marginLeft: 40 , flexDirection:'row' , borderBottomWidth:0.5 , borderBottomColor:'#dcdcdc'}}>
     <View style={{flex:0.5 , justifyContent:'flex-start'}}>
     <Text style={{fontSize:16}}>Neue Nachricht</Text>
     </View>
@@ -283,7 +282,7 @@ logout() {
     </View>
     </View>
 
-    <View style={{flex:1, margin:5,marginLeft: 40 , flexDirection:'row' , borderBottomWidth:0.5 , borderBottomColor:'#dcdcdc'}}>
+    <View style={{ margin:5,marginLeft: 40 , flexDirection:'row' , borderBottomWidth:0.5 , borderBottomColor:'#dcdcdc'}}>
     <View style={{flex:0.5 , justifyContent:'flex-start'}}>
     <Text style={{fontSize:16}} >Neuigkeiten</Text>
     </View>
@@ -307,13 +306,13 @@ logout() {
    
 
         <Accordion
-
+     style={{flex:1}}
     header={profileheader}
     onPress={this.goToProfile.bind(this)}
     easing="easeOutCubic"
     />
       <Accordion
-
+       style={{flex:1}}
     header={sucheheader}
     onPress={this.goToSearch.bind(this)}
     easing="easeOutCubic"
@@ -323,31 +322,33 @@ logout() {
     </View>
     
     <View style= {{flex:1,marginBottom:deviceheight/15 , backgroundColor:'#fff'}}>
-
+    <View style= {{flex:1}}>
     <Accordion
-
+     style={{flex:1}}
     header={header}
     //onPress={this.change.bind(this)}
     content={mit}
     easing="easeOutCubic"
     />
-
+    </View>
+    <View style= {{flex:1}}>
     <Accordion
-
+     style={{flex:1}}
     header={rechheader}
     //onPress={this.change.bind(this)}
     content={recht}
     easing="easeOutCubic"
     />
-
+    </View>
+    <View style= {{flex:1}}>
     <Accordion
-
+     style={{flex:1}}
     header={supportheader}
     //onPress={this.change.bind(this)}
     content={support}
     easing="easeOutCubic"
     />
-
+     </View>
 
 
     </View>
