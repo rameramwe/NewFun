@@ -10,12 +10,12 @@ class FirebaseClient {
     this.sendNotificationWithData = this.sendNotificationWithData.bind(this);
   }
 
-  sendNotification(token) {
+  sendNotification(token, title1,body1) {
     let body = {
     	"to": "ctB3MRz3Nug:APA91bFAB_hv4CyAu10sHp4J4tieRpwgUeSH5stX-g9IeubU37RgjITEb4oUDTiJHWI-qldM80bNDfAS3RTgsEd8JaCOTdcEXYDXOVGs5sBUwqKEWiwg5RYX5aXGShNQuVUtx_XlxhC6",
       "notification":{
-    		"title": "Simple FCM Client",
-    		"body": "This is a notification with only NOTIFICATION.",
+    		"title": title1,
+    		"body": body1,
     		"sound": "default",
     		"click_action": "fcm.ACTION.HELLO"
     	},

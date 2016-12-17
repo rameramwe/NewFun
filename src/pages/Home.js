@@ -182,8 +182,20 @@
                     var unseenNotifNumberGlobal = snapshot.numChildren(); 
                     console.log("unseenNotifNumber",unseenNotifNumber,unseenNotifNumberGlobal);
                    save1.setState({ unseenNotifNumberGlobal:unseenNotifNumber });
+                   var body1="You have "+unseenNotifNumber+ " new offers ";
+                   firebaseClient.sendNotification(save1.state.token,"Funshare",body1);
+                  
+
+                  save1.refreshUnsubscribe = FCM.on("refreshToken", token => {
+                    console.log("TOKEN (refreshUnsubscribe)", token);
+                    save1.props.onChangeToken(token);
                   });
-      });
+                
+
+                
+
+                          });
+              });
         /*
          var newItems = false;
       var eventsList = firebase.database().ref('Notifications/' + "24IuFFFZ53aYfl8IIe1p36OJkA83");

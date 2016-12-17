@@ -165,7 +165,7 @@ renderRow() {
       firebase.database()
       .ref('Notifications')
       .child(uid)
-      .child('Seen')
+      .child('Accepted')
       .once('value')
       .then(function(snapshot) {
        num =snapshot.numChildren();
@@ -173,6 +173,7 @@ renderRow() {
         snapshot.forEach(function(childSnapshot) {
          var picOfWantedItem= "http://orig01.deviantart.net/ace1/f/2010/227/4/6/png_test_by_destron23.png";
          var picOfOfferedItem="http://orig01.deviantart.net/ace1/f/2010/227/4/6/png_test_by_destron23.png";
+         var lastMessage=null;
          var oldRef=firebase.database()
          .ref('Notifications')
          .child(uid)
@@ -185,7 +186,7 @@ renderRow() {
          firebase.database()
          .ref('Notifications')
          .child(uid)
-         .child('Seen').child(childSnapshot.key).once('value').then(function(snapshot) {
+         .child('Accepted').child(childSnapshot.key).once('value').then(function(snapshot) {
           snapVal=snapshot.val();
           firebase.database().ref('items').child(snapshot.val().uidOfOfferingUser)
           .child(snapshot.val().keyOfOfferedItem).once('value').then(function(snapshot1){
@@ -196,7 +197,21 @@ renderRow() {
           .child(snapshot.val().keyOfWantedItem).once('value').then(function(snapshot2){
            // console.log(snapshot2);
              picOfWantedItem= snapshot2.val().itemPic;
+    
+          
+              
           }).then(function(){
+                      firebase.database()
+              .ref('Offers')
+              .child(snapshot.val().uidOfOfferingUser)
+              .child(snapshot.val().offerKey)
+              .child('OfferMessages').child('0').once('value').then(function(snapshot3) {
+                
+                if(snapshot3.val()===null)lastMessage="Start talking Now !!";
+                else
+                lastMessage=snapshot3.val().text;
+
+              }).then(function(){
             var iteminfo = {
                      created: snapshot.val().created ,
                      keyOfOfferedItem: snapshot.val().keyOfOfferedItem ,
@@ -210,8 +225,10 @@ renderRow() {
                      uidOfLikedItem: snapshot.val().uidOfLikedItem,
                      uidOfOfferingUser: snapshot.val().uidOfOfferingUser,
                      picOfOfferedItem:picOfOfferedItem,
-                     picOfWantedItem:picOfWantedItem
+                     picOfWantedItem:picOfWantedItem,
+                     lastMessage:lastMessage,
                       }
+
 
                     // console.log(iteminfo);
          // alert(itemcategory)
@@ -227,14 +244,7 @@ renderRow() {
                 style={ styles.image }
                 source={{uri:picOfWantedItem}}
                 /> 
-                <Image
-                style={{height:25 , width : 25 , margin:10}}
-                source={require('funshare/src/img/star.png')}
-                /> 
-                <Image
-                style={ styles.image }
-                source={{uri:picOfOfferedItem}}
-                /> 
+ 
                 </View>
 
                 <View style = {{flex:0.4 , flexDirection:'row', justifyContent:'center'}}>
@@ -248,7 +258,7 @@ renderRow() {
                   <Text
                   style={{fontSize:20 , fontWeight:'bold'}}>
 
-                 go to Chat
+                 {iteminfo.lastMessage}
                   </Text> 
                   </View>
                   </TouchableOpacity>
@@ -271,6 +281,13 @@ renderRow() {
           }
 
            });
+
+          })
+
+
+
+
+
 
         });
          

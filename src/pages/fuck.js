@@ -297,19 +297,22 @@ render() {
 
    <View style= {{ height:(deviceHeight-(deviceHeight/3)-90)}}>
    <View style ={{flex:2, marginTop:0 ,borderBottomWidth:1, borderColor:'#a9a9a9'}}>
+ 
+
    <TextInput
    onChangeText={(text) => this.setState({title: text})} 
    maxLength={87}
    multiline={true}
    numberOfLines = {2}
    value={this.state.title}
-   editable={true}
+   editable={true} 
    placeholderTextColor= '#a9a9a9'
    selectionColor='#6495ed'
    style={styles.textinput}
    autoCapitalize="none"
    autoCorrect={false}
    returnKeyType="next"
+   underlineColorAndroid="transparent"
    onSubmitEditing={() => this.description.focus()}
    />
    </View>
@@ -328,6 +331,7 @@ render() {
    autoCapitalize="none"
    autoCorrect={false}
    multiline={true}
+   underlineColorAndroid="transparent"
    />
    </View>
    </View>

@@ -74,6 +74,7 @@ export default React.createClass({
       
   },
     goBack (card) {
+     
      this.refs['swiper']._goToPreviousCard()  
   },
 

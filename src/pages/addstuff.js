@@ -150,15 +150,15 @@ render()
 
    }  ;
    var header=(
-    <View style={{flex:1 ,flexDirection:"row" }}>
+    <View style={{flex:2 ,flexDirection:"row" }}>
 
     <Image
 
     source={require('funshare/src/img/category.jpg')}
 
-    style = {{width:25, height:25, marginRight:15}}
+    style = {{flex:.1 ,width:25, height:25, marginRight:15}}
     />
-    <Text style={{fontSize:17, fontWeight:"bold"}}>KATEGORIE AUSWÄHLEN</Text>
+    <Text style={{flex:.9 ,fontSize:17, fontWeight:"bold"}}>KATEGORIE AUSWÄHLEN</Text>
 
     </View>
     );
@@ -367,6 +367,7 @@ render()
       autoCorrect={false}
       numberOfLines = {1}
       returnKeyType="next"
+      underlineColorAndroid="transparent"
       onChangeText={(title) => this.setState({title})}
       onSubmitEditing={() => this.description.focus()}
       />
@@ -374,6 +375,7 @@ render()
 
       <View style ={{flex:1, borderBottomWidth:1, borderColor:'#dcdcdc'}}>
       <TextInput
+      underlineColorAndroid="transparent"
       ref={(ref) => this.description = ref}
       placeholder="Beschreibe es.."
       placeholderTextColor= '#a9a9a9'
@@ -398,6 +400,7 @@ render()
       <Accordion
       expanded={this.state.open}
       header={header}
+      style={{flex:1}}
       onPress={this.change.bind(this)}
       content={container}
       easing="easeOutCubic"

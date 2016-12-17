@@ -138,6 +138,7 @@ class chatscreen extends React.Component {
      picOfWantedItem:null,
      picOfOfferedItem:null,
      uidOfOfferingUser:null,
+     uidOfLikedItem:null,
      newRef:null,
      childKey:null,
      snapVal:null,
@@ -152,19 +153,36 @@ class chatscreen extends React.Component {
  {
   this.props.replaceRoute(Routes.Home());
  }
-finishDeal(childKey,uidOfOfferingUser,snapVal,oldRef){
+finishDeal(childKey,uidOfOfferingUser,snapVal,oldRef,uidOfLikedItem){
   var self=this;
-  alert(childKey);
+  //alert(childKey);
   //send a notification that lets the other user know that his offer was accepted and activate chat 
     var newRefForOfferingUser=firebase.database()
          .ref('Notifications')
          .child(uidOfOfferingUser)
+         .child('Accepted').child(childKey);
+    var newRefForLikedItem=firebase.database()
+         .ref('Notifications')
+         .child(uidOfLikedItem)
+         .child('Accepted').child(childKey);
+    var oldRefLikedItem=firebase.database()
+         .ref('Notifications')
+         .child(uidOfLikedItem)
          .child('Seen').child(childKey);
+
     newRefForOfferingUser.set( snapVal, function(error) {
                if( !error ) {   }
                else if( typeof(console) !== 'undefined' && console.error ) {  console.error(error); }
           }).then(function(){
+            newRefForLikedItem.set( snapVal, function(error) {
+               if( !error ) {oldRefLikedItem.remove();   }
+               else if( typeof(console) !== 'undefined' && console.error ) {  console.error(error); }
+          }).then(function(){
             self.props.replaceRoute(Routes.AcceptedOffers());
+
+          });
+
+            
           });
   
   
@@ -271,7 +289,7 @@ renderRow() {
 
                   <TouchableOpacity
                   style = {{flex:0.5 , justifyContent:'center' , alignItems:'center'}}
-                  onPress={self._setModalVisible.bind(self, true,picOfOfferedItem,picOfWantedItem,newRef,snapVal,oldRef,snapshot.val().uidOfOfferingUser,childKey)}
+                  onPress={self._setModalVisible.bind(self, true,picOfOfferedItem,picOfWantedItem,newRef,snapVal,oldRef,snapshot.val().uidOfOfferingUser,childKey,snapshot.val().uidOfLikedItem)}
                   >
                   <View>
                   <Image
@@ -318,7 +336,7 @@ renderRow() {
 }
 
 
-_setModalVisible = (visible,picOfOfferedItem,picOfWantedItem,newRef,snapVal,oldRef,uidOfOfferingUser,childKey ) => {
+_setModalVisible = (visible,picOfOfferedItem,picOfWantedItem,newRef,snapVal,oldRef,uidOfOfferingUser,childKey,uidOfLikedItem ) => {
   if (newRef){
     newRef.set( snapVal, function(error) {
                if( !error ) {  oldRef.remove(); }
@@ -328,7 +346,7 @@ _setModalVisible = (visible,picOfOfferedItem,picOfWantedItem,newRef,snapVal,oldR
   
 
   this.setState({modalVisible: visible ,picOfOfferedItem:picOfOfferedItem , picOfWantedItem:picOfWantedItem,
-    uidOfOfferingUser:uidOfOfferingUser,newRef:newRef,snapVal:snapVal , childKey:childKey});
+    uidOfOfferingUser:uidOfOfferingUser,newRef:newRef,snapVal:snapVal , childKey:childKey,uidOfLikedItem:uidOfLikedItem});
 }
 
 render() {
@@ -422,7 +440,7 @@ icostyle={{width:60, height:60}}
 
 <IcoButton
 source={require('funshare/src/img/like.png')}
-onPress={this.finishDeal.bind(this,this.state.childKey,this.state.uidOfOfferingUser,this.state.snapVal,this.state.newRef)}
+onPress={this.finishDeal.bind(this,this.state.childKey,this.state.uidOfOfferingUser,this.state.snapVal,this.state.newRef,this.state.uidOfLikedItem)}
 icostyle={{width:60, height:60}}
 />
 <Text style={{color:'white', fontSize:15 ,marginTop:18  }}>Bestätigen</Text>

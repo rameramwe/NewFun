@@ -454,6 +454,7 @@ renderImages(){
        value={this.state.desc}
        style={styles.textinput}
        editable={false}
+       underlineColorAndroid="transparent"
        />
 
        </View>
@@ -471,6 +472,7 @@ renderImages(){
        autoCorrect={false}
        multiline={true}
        numberOfLines = {4}
+       underlineColorAndroid="transparent"
        />
        </View>
 
