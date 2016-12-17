@@ -212,7 +212,10 @@
       />
     );
   }
-
+  goToHome()
+{
+  this.props.replaceRoute(Routes.Home());
+}
   renderBubble(props) {
     return (
       <Bubble
@@ -271,7 +274,7 @@
     <IcoButton
     
     source={require('funshare/src/img/swop.png')}
-    //onPress={this.goToHome.bind(this)}
+    onPress={this.goToHome.bind(this)}
     icostyle={{width:35, height:35}}
     />
 

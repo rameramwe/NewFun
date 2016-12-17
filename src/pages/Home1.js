@@ -289,20 +289,6 @@ componentWillUnmount () {
     />
 
     </View>
-     <View style={styles.inputContainer}>
-  <IconButton     
-  container={{  flex: 1 ,marginBottom:5,flexDirection: "row" }}
-
-  value={"AcceptedOffers"}
-  source={require('../img/box.png')}
-  icostyle={{ width:30,
-    height: 30,
-    marginLeft:3}}
-    onPress={this.goToAcceptedOffers.bind(this)}
-    />
-
-    </View>
-
     <View style={styles.inputContainer}>
     <IconButton
     container={{  flex: 1 ,marginBottom:5,flexDirection: "row" }}

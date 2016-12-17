@@ -27,6 +27,8 @@ import DataStore from 'funshare/DataStore';
 import Actions from 'funshare/Actions';
 import SharedStyles from 'funshare/SharedStyles';
 import IconButton from 'funshare/src/components/icotextButton';
+import AcceptedOffers from 'funshare/src/pages/AcceptedOffers';
+
 var piclinks=[];
 
 var deviceheight = Dimensions.get('window').height ;
@@ -45,6 +47,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
    separator: {
+    flex:1,
     alignSelf: 'flex-end',
      borderBottomWidth:1 , borderBottomColor:'#dcdcdc',
   
@@ -119,6 +122,7 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(255,255,255,0.1)",
   },
   image:{
+    flex:1,
     height:60,
     width:60,
     borderRadius:30
@@ -178,7 +182,8 @@ finishDeal(childKey,uidOfOfferingUser,snapVal,oldRef,uidOfLikedItem){
                if( !error ) {oldRefLikedItem.remove();   }
                else if( typeof(console) !== 'undefined' && console.error ) {  console.error(error); }
           }).then(function(){
-            self.props.replaceRoute(Routes.AcceptedOffers());
+            alert("Now you can chat with each other !!");
+            self.props.replaceRoute(Routes.chatscreen());
 
           });
 
@@ -335,7 +340,12 @@ renderRow() {
   }); 
 }
 
-
+ 
+goChat(iteminfo){
+  //alert(this.state.animationType);
+ //  alert(iteminfo.lastMessage)
+ this.props.replaceRoute(Routes.OfferChat(iteminfo));
+}
 _setModalVisible = (visible,picOfOfferedItem,picOfWantedItem,newRef,snapVal,oldRef,uidOfOfferingUser,childKey,uidOfLikedItem ) => {
   if (newRef){
     newRef.set( snapVal, function(error) {
@@ -378,10 +388,7 @@ render() {
  return (
   <View style = {{flex:1}}>  
   <TopNavigation/>  
-  <ScrollView>
-  <View style ={{flex:2,flexDirection:'row',  alignItems:'center',
-  justifyContent:'center'
-}}>
+  <ScrollView style= {{flex:1}}>
 
 <Modal
 animationType={this.state.animationType}
@@ -453,7 +460,13 @@ icostyle={{width:60, height:60}}
 </View>
 </View>
 </Modal>
+  <View style= {{flex:1 , borderBottomColor:'#FF5C7E', borderBottomWidth:0.5}}>
+  <Text style = {{color:'#FF5C7E' ,fontSize:20 , fontWeight:'bold'}}>  Offers :</Text>
+</View>
+  
 
+
+<View style = {{flex:1}}>
   <ListView
 
   dataSource={this.state.dataSource}
@@ -461,15 +474,21 @@ icostyle={{width:60, height:60}}
   // renderSeparator={() => <View style={styles.separator} />}
    renderSeparator={(sectionId, rowId) => <View key={rowId} style={styles.separator} />}
   contentContainerStyle={{flex:1,paddingTop:20 ,backgroundColor:'white',}}/>
+ </View>
+<View style= {{flex:1 , borderBottomColor:'#FF5C7E', borderBottomWidth:0.5}}>
+  <Text style = {{color:'#FF5C7E' ,fontSize:20 , fontWeight:'bold'}}>  Messages :</Text>
+</View>
+<View style = {{flex:1}}>
+
+<AcceptedOffers goChat={this.goChat.bind(this)}/>
+</View>
 
 
 
 
 
 
-
-
-  </View>
+ 
 
   </ScrollView>
   </View>

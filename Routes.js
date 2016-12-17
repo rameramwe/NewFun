@@ -16,7 +16,6 @@ import details from 'funshare/src/pages/details';
 import fuck from 'funshare/src/pages/fuck';
 import addstuff from 'funshare/src/pages/addstuff';
 import mystuff from 'funshare/src/pages/mystuff';
-import userChat from 'funshare/src/pages/userChat';
 import plus from 'funshare/src/components/plus';
 import fertig from 'funshare/src/components/fertig';
 import wishlist from 'funshare/src/pages/wishlist'; 
@@ -143,12 +142,7 @@ class Routes {
       component: mystuff,     
     }
   } 
-  userChat() {
-    return {
-      name: "userChat",
-      component: userChat,     
-    }
-  } 
+  
   OfferChat(iteminfo) {
     return {
       name: "OfferChat",
