@@ -12,7 +12,7 @@ class FirebaseClient {
 
   sendNotification(token, title1,body1) {
     let body = {
-    	"to": "ctB3MRz3Nug:APA91bFAB_hv4CyAu10sHp4J4tieRpwgUeSH5stX-g9IeubU37RgjITEb4oUDTiJHWI-qldM80bNDfAS3RTgsEd8JaCOTdcEXYDXOVGs5sBUwqKEWiwg5RYX5aXGShNQuVUtx_XlxhC6",
+    	"to": token,
       "notification":{
     		"title": title1,
     		"body": body1,

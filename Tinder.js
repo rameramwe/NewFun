@@ -10,7 +10,6 @@ var deviceheight = Dimensions.get('window').height/(3/2)  ;
 var deviceWidth = Dimensions.get('window').width-30  ;
 var Cards = []
 
-
 let NoMoreCards = React.createClass({
   render() {
     return (
@@ -29,7 +28,7 @@ const Cards2 = [
 export default React.createClass({
 
  Card(x) {
-
+currentLikedItem=x;
 
   return (
 <View key= {x} style= {{flex:1}}>
@@ -74,7 +73,7 @@ export default React.createClass({
       
   },
     goBack (card) {
-     
+
      this.refs['swiper']._goToPreviousCard()  
   },
 
@@ -170,6 +169,23 @@ cardRemoved (index) {
 gotToFuck(){
     this.props.replaceRoute(Routes.addstuff())
 },
+addtofavorite (x){
+ 
+  var offerData = {
+            keyOfWantedItem: x.keyOfWantedItem,
+            uidOfLikedItem: x.uidOfLikedItem,   
+            created:firebase.database.ServerValue.TIMESTAMP
+          };
+  var uploadTask = firebase.database()
+      .ref('profiles')
+      .child(currentUserGlobal.uid)
+      .child('favorite');
+
+ 
+  var favoriteKey = uploadTask.push(offerData).key ;
+
+
+},
 render() {
 
 
@@ -215,7 +231,7 @@ render() {
   <View style={{flex:0.25,alignItems:'center'}}>
   <IcoButton
   source={require('funshare/src/img/like.png')}
-  onPress={this.props._setModalVisible }
+  onPress={() => {this.props.goToDetails(currentLikedItem.description ,currentLikedItem.image,   currentLikedItem.title, currentLikedItem.uidOfLikedItem ,currentLikedItem.keyOfWantedItem )}}
   icostyle={{width:60, height:60}}
   />
   </View>
@@ -224,6 +240,7 @@ render() {
   <IcoButton
   
   source={require('funshare/src/img/wuncbt.png')}
+  onPress={()=>{this.addtofavorite(currentLikedItem)}}
   icostyle={{width:45, height:45}}
   />
   </View>

@@ -35,6 +35,7 @@
   var image=[] ;
   global.currentUserGlobal=null;
   global.unseenNotifNumberGlobal=null;
+  global.currentLikedItem=null;
   const styles = StyleSheet.create({
     Mcontainer: {flex:1 ,  justifyContent: 'flex-end', }, 
     MinnerContainer: {flex:1,justifyContent:'flex-end' },
@@ -424,7 +425,7 @@ var Notification = () =>
       <View style={{flex:0.25,alignItems:'center'}}>
       <IcoButton
       source={require('funshare/src/img/like.png')}
-  //onPress={this.props._setModalVisible}
+  onPress={() => {this.goToDetails(currentLikedItem.description ,currentLikedItem.image,   currentLikedItem.title, currentLikedItem.uidOfLikedItem ,currentLikedItem.keyOfWantedItem )}}
   icostyle={{width:60, height:60}}
   />
   </View>
